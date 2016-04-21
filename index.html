@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>微信撤回信息昵称生成器</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="微信撤回信息昵称生成器">
+  <meta name="author" content="HiiTea <luohaojing@gmail.com>">
+  <meta name="keyword" content="微信撤回信息昵称生成器 昵称生成器">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <style>
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    .danger {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>微信撤回信息<br>昵称生成器</h1>
+  <label for="nickname">昵称</label>
+  <input id="nickname" type="text" maxlength="10">
+  <br>
+  <label for="action">动作</label>
+  <input id="action" type="text" maxlength="10">
+  <br>
+  <p>注意，如果你输入的内容太长，将有可能会被微信截断，建议昵称加动作少于12个字</p>
+  <p class="danger">请先使用“全部选择”再复制，或使用“全选复制”，以免遗漏特殊符号。</p>
+  <button onclick="gen()">生成</button>
+  <input id="result">
+  <p>预览</p>
+  <p id="preview"></p>
+</div>
+<a href="https://github.com/sabrinaluo/nickname-gen"><img
+  style="position: absolute; top: 0; right: 0; border: 0;"
+  src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67"
+  alt="Fork me on GitHub"
+  data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+<script>
+  function gen() {
+    var name = document.getElementById('nickname').value;
+    var action = document.getElementById('action').value;
+    var $result = document.getElementById('result');
+    var $preview = document.getElementById('preview');
+    var result = '\u202E' + action.split('').reverse().join('') + '\u202D' + name;
+    $result.value = result;
+    $preview.innerText = '"' + result + '"撤回了一条信息';
+  }
+</script>
+</body>
+</html>
